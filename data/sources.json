@@ -1,0 +1,1070 @@
+{
+  "meta": {
+    "titre": "Inventaire des sources de données en ligne sur les prix du logement - UEMOA",
+    "date_recensement": "2026-09-27",
+    "pays": {
+      "BEN": "Bénin",
+      "BFA": "Burkina Faso",
+      "CIV": "Côte d'Ivoire",
+      "GNB": "Guinée-Bissau",
+      "MLI": "Mali",
+      "NER": "Niger",
+      "SEN": "Sénégal",
+      "TGO": "Togo",
+      "UEMOA": "UEMOA (régional)"
+    },
+    "categories": {
+      "A": "Portail d'annonces multi-pays",
+      "B": "Portail d'annonces national",
+      "C": "Site d'agence ou de promoteur",
+      "D": "Agrégateur de prix / observatoire privé",
+      "E": "Source statistique officielle",
+      "F": "Source institutionnelle / étude",
+      "G": "Réseau social",
+      "H": "Source foncière / fiscale"
+    },
+    "criteres": {
+      "acces": "Accessibilité technique (HTML statique indexé = 0 ; rendu JavaScript, lenteur ou inscription = 1 ; anti-robot, connexion obligatoire ou protection anti-copie = 2)",
+      "structure": "Structuration des variables (prix, surface, pièces, localisation dans des champs distincts = 0 ; partiellement dans le texte libre = 1 ; texte libre ou PDF non tabulaire = 2)",
+      "volume": "Volume et fréquence (centaines ou milliers d'annonces actives, ou série mensuelle = 0 ; dizaines d'annonces, ou série annuelle = 1 ; quelques annonces, ou donnée ponctuelle = 2)",
+      "qualite": "Qualité et fiabilité (annonces vérifiées ou source officielle = 0 ; mélange agences et particuliers = 1 ; particuliers non modérés, doublons, prix absents = 2)",
+      "cadre": "Cadre d'utilisation (réutilisation ouverte ou API = 0 ; conditions à vérifier = 1 ; interdiction de collecte, paywall ou licence payante = 2)"
+    }
+  },
+  "sources": [
+    {
+      "id": "P01", "nom": "CoinAfrique", "categorie": "A",
+      "pays": ["SEN", "CIV", "BEN", "TGO", "BFA", "MLI", "NER"],
+      "type": "Vente, location, terrains (petites annonces généralistes)",
+      "liens": [
+        {"pays": "SEN", "url": "https://sn.coinafrique.com/categorie/immobilier"},
+        {"pays": "SEN", "url": "https://sn.coinafrique.com/categorie/appartements"},
+        {"pays": "CIV", "url": "https://ci.coinafrique.com/categorie/immobilier"},
+        {"pays": "BEN", "url": "https://bj.coinafrique.com/categorie/immobilier"},
+        {"pays": "TGO", "url": "https://tg.coinafrique.com/categorie/immobilier"},
+        {"pays": "BFA", "url": "https://bf.coinafrique.com/categorie/immobilier"},
+        {"pays": "MLI", "url": "https://ml.coinafrique.com/categorie/immobilier"},
+        {"pays": "NER", "url": "https://ne.coinafrique.com/categorie/immobilier"}
+      ],
+      "url_test": "https://sn.coinafrique.com/categorie/appartements",
+      "variables": "Prix, catégorie (appartement, villa, terrain, chambre...), ville/quartier, date relative ; pièces et surface souvent dans le titre ou la description",
+      "volume": "Plateforme la plus fournie de la zone (plusieurs milliers d'annonces immobilières actives au Sénégal selon les comparatifs)",
+      "scores": [0, 1, 0, 2, 1],
+      "priorite": 1,
+      "observations": "Pages indexées par les moteurs de recherche avec le prix dans les extraits : le contenu est servi en HTML. URL stables avec identifiant numérique (ex. /annonce/villas/vente-villa-5-pieces-ouaga-2000-5702803). Même gabarit sur les 7 sous-domaines, donc un seul collecteur. Point faible : annonces de particuliers (doublons, prix fantaisistes, annonces non retirées)."
+    },
+    {
+      "id": "P02", "nom": "Keur-Immo", "categorie": "A",
+      "pays": ["SEN", "CIV", "BEN", "TGO", "BFA", "NER", "MLI"],
+      "type": "Vente, location, terrains (agences vérifiées uniquement)",
+      "liens": [
+        {"pays": "SEN", "url": "https://keur-immo.com/en/senegal/real-estate-in-dakar/"},
+        {"pays": "SEN", "url": "https://keur-immo.com/en/senegal/apartments-for-rent-in-dakar/"},
+        {"pays": "CIV", "url": "https://keur-immo.com/en/ivory-coast/real-estate-in-abidjan/"},
+        {"pays": "CIV", "url": "https://keur-immo.com/en/ivory-coast/villas-and-houses-for-sale-in-abidjan/"},
+        {"pays": "BEN", "url": "https://keur-immo.com/en/benign/real-estate-in-cotonou-benin/"},
+        {"pays": "TGO", "url": "https://keur-immo.com/en/togo/real-estate-in-lome-togo/"},
+        {"pays": "BFA", "url": "https://keur-immo.com/burkina-faso/annonce-immobiliere-burkina-faso/ouaga-2000-belle-villa-duplex-de-06-pieces-en-location/"},
+        {"pays": "NER", "url": "https://keur-immo.com/en/niger/"}
+      ],
+      "url_test": "https://keur-immo.com/en/senegal/apartments-for-rent-in-dakar/",
+      "variables": "Prix, type, ville/quartier, pièces, surface ; statistiques agrégées par page (prix moyen, intervalle interquartile)",
+      "volume": "277 appartements à louer et 132 à vendre à Dakar ; 126 villas à vendre à Abidjan ; environ 370 biens au Togo ; plus faible ailleurs",
+      "scores": [0, 0, 1, 1, 1],
+      "priorite": 1,
+      "observations": "Seules les agences vérifiées publient, ce qui réduit le bruit mais oriente l'échantillon vers le haut de gamme. Les pages de catégorie affichent déjà des statistiques (prix moyen, moitié des annonces entre X et Y), utiles comme contrôle. Couverture annoncée du Mali sans page vérifiée."
+    },
+    {
+      "id": "P03", "nom": "Afrimalin", "categorie": "A",
+      "pays": ["CIV", "BFA", "BEN", "SEN", "MLI"],
+      "type": "Vente, location (petites annonces généralistes)",
+      "liens": [
+        {"pays": "CIV", "url": "https://www.afrimalin.ci/offres/filtrer/abidjan-1/appartements"},
+        {"pays": "BFA", "url": "https://www.afrimalin.bf/"},
+        {"pays": "BEN", "url": "https://www.afrimalin.bj/"}
+      ],
+      "url_test": "https://www.afrimalin.ci/offres/filtrer/abidjan-1/appartements",
+      "variables": "Prix, commune/quartier, type ; pièces dans le titre",
+      "volume": "Moyen (présent dans 8 pays d'Afrique francophone dont 5 de l'UEMOA)",
+      "scores": [1, 1, 1, 2, 1],
+      "priorite": 2,
+      "observations": "Annonces indexées avec prix (ex. appartement 3 pièces Riviera Faya à 200 000 FCFA/mois). Qualité hétérogène (particuliers). Structure technique non vérifiée."
+    },
+    {
+      "id": "P04", "nom": "Réseau de portails « Immobilier <pays> » (gabarit commun)", "categorie": "A",
+      "pays": ["SEN", "CIV", "NER", "MLI", "BFA"],
+      "type": "Vente, location, terrains (annonces gratuites agences et particuliers)",
+      "liens": [
+        {"pays": "SEN", "url": "https://annonces-immobilieres-senegal.com/"},
+        {"pays": "SEN", "url": "https://annonces-immobilieres-senegal.com/regions/dakar/"},
+        {"pays": "CIV", "url": "https://annonces-immobilieres-cote-ivoire.com/"},
+        {"pays": "NER", "url": "https://niger-immobilier.com/"},
+        {"pays": "NER", "url": "https://niger-immobilier.com/statuts/a-louer/"},
+        {"pays": "MLI", "url": "https://selogeraumali.com/"},
+        {"pays": "MLI", "url": "https://selogeraumali.com/location/bamako/"},
+        {"pays": "BFA", "url": "https://burkina-faso-immobilier.com/regions/ouagadougou/"}
+      ],
+      "url_test": "https://niger-immobilier.com/statuts/a-louer/",
+      "variables": "Prix, type, statut (à louer/à vendre), ville/quartier, surface, chambres, salles de bain, référence",
+      "volume": "1 727 annonces à Bamako (Se Loger au Mali) ; statistiques par type (prix moyen, intervalle interquartile)",
+      "scores": [0, 1, 0, 1, 1],
+      "priorite": 1,
+      "observations": "Les 5 sites partagent la même arborescence (/regions/<ville>/, /types/<type>/, /statuts/a-louer/) et les mêmes intitulés de page : vraisemblablement un même éditeur, à confirmer. Un seul collecteur couvrirait 5 pays, dont le Niger et le Mali où l'offre en ligne est rare. Fiches avec référence (ex. Ref.14516) et surface."
+    },
+    {
+      "id": "P05", "nom": "Expat.com (rubrique logement)", "categorie": "A",
+      "pays": ["BFA", "CIV", "NER"],
+      "type": "Location, vente (segment expatriés)",
+      "liens": [
+        {"pays": "BFA", "url": "https://www.expat.com/fr/immobilier/afrique/burkina-faso/ouagadougou/a-louer.html"},
+        {"pays": "CIV", "url": "https://www.expat.com/en/housing/africa/ivory-coast/flats-for-rent.html"},
+        {"pays": "NER", "url": "https://www.expat.com/en/housing/africa/niger/"}
+      ],
+      "url_test": "https://www.expat.com/en/housing/africa/ivory-coast/flats-for-rent.html",
+      "variables": "Prix, type, ville ; surface variable",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 2, 1],
+      "priorite": 3,
+      "observations": "Segment très spécifique (expatriés, meublés). Utile seulement en complément."
+    },
+    {
+      "id": "P06", "nom": "Agentiz", "categorie": "A",
+      "pays": ["NER"],
+      "type": "Vente, location",
+      "liens": [{"pays": "NER", "url": "https://ne.agentiz.com/en"}],
+      "url_test": "https://ne.agentiz.com/en",
+      "variables": "Prix, type, localisation",
+      "volume": "Faible (non mesuré)",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Portail international multi-pays ; présence au Niger. Volume à mesurer."
+    },
+    {
+      "id": "P07", "nom": "Realigro", "categorie": "A",
+      "pays": ["NER"],
+      "type": "Vente",
+      "liens": [{"pays": "NER", "url": "https://niger.realigro.com/for-sale/property/"}],
+      "url_test": "https://niger.realigro.com/for-sale/property/",
+      "variables": "Prix, type, localisation",
+      "volume": "Faible (non mesuré)",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Portail international ; présence résiduelle au Niger."
+    },
+    {
+      "id": "P08", "nom": "Properstar", "categorie": "D",
+      "pays": ["CIV", "GNB"],
+      "type": "Prix au m² agrégés et annonces internationales",
+      "liens": [
+        {"pays": "CIV", "url": "https://www.properstar.com/cote-d-ivoire/house-price"},
+        {"pays": "CIV", "url": "https://www.properstar.com/cote-d-ivoire/abidjan-l1/house-price"},
+        {"pays": "GNB", "url": "https://www.properstar.com/guinea-bissau/house-price"}
+      ],
+      "url_test": "https://www.properstar.com/cote-d-ivoire/abidjan-l1/house-price",
+      "variables": "Prix moyen au m², prix moyen par type",
+      "volume": "Moyen en Côte d'Ivoire, faible ailleurs",
+      "scores": [1, 0, 1, 1, 1],
+      "priorite": 3,
+      "observations": "Utile comme point de comparaison, notamment pour la Guinée-Bissau où l'offre est quasi inexistante."
+    },
+    {
+      "id": "P09", "nom": "Numbeo (Property Prices)", "categorie": "D",
+      "pays": ["CIV", "SEN", "BEN", "TGO"],
+      "type": "Prix au m² et loyers déclarés par les internautes",
+      "liens": [
+        {"pays": "CIV", "url": "https://www.numbeo.com/property-investment/in/Abidjan"},
+        {"pays": "SEN", "url": "https://www.numbeo.com/property-investment/in/Dakar"},
+        {"pays": "BEN", "url": "https://www.numbeo.com/property-investment/in/Cotonou-Benin"},
+        {"pays": "TGO", "url": "https://www.numbeo.com/cost-of-living/compare_cities.jsp?country1=Ivory+Coast&city1=Abidjan&country2=Togo&city2=Lome"}
+      ],
+      "url_test": "https://www.numbeo.com/property-investment/in/Abidjan",
+      "variables": "Prix au m² centre / périphérie, loyers 1 et 3 chambres, rendements",
+      "volume": "Très faible : Abidjan 81 saisies de 16 contributeurs, Dakar 54 saisies de 9 contributeurs (18 derniers mois) ; Cotonou incomplet",
+      "scores": [0, 0, 2, 2, 2],
+      "priorite": 3,
+      "observations": "Données participatives, échantillon trop faible pour un indice. Réutilisation encadrée par les conditions de Numbeo (API payante). À utiliser seulement comme contrôle de vraisemblance."
+    },
+    {
+      "id": "P10", "nom": "Global Property Guide", "categorie": "D",
+      "pays": ["SEN", "GNB"],
+      "type": "Loyers, rendements, variations de prix",
+      "liens": [
+        {"pays": "SEN", "url": "https://www.globalpropertyguide.com/africa/senegal/price-change-1-year-real"},
+        {"pays": "GNB", "url": "https://www.globalpropertyguide.com/Africa/Guinea-Bissau/rent"}
+      ],
+      "url_test": "https://www.globalpropertyguide.com/africa/senegal/price-change-1-year-real",
+      "variables": "Loyers, rendements locatifs bruts",
+      "volume": "Ponctuel",
+      "scores": [1, 1, 2, 1, 2],
+      "priorite": 3,
+      "observations": "Indique que le Sénégal ne publie pas de statistiques de prix des logements. Contenu partiellement payant."
+    },
+    {
+      "id": "P11", "nom": "Expat-Dakar", "categorie": "B",
+      "pays": ["SEN"],
+      "type": "Vente, location, terrains",
+      "liens": [
+        {"pays": "SEN", "url": "https://www.expat-dakar.com/immobilier"},
+        {"pays": "SEN", "url": "https://www.expat-dakar.com/appartements-a-louer"}
+      ],
+      "url_test": "https://www.expat-dakar.com/appartements-a-louer",
+      "variables": "Prix FCFA, chambres, salles de bain, surface, quartier, région ; prix et surface moyens par quartier",
+      "volume": "Élevé (premier portail d'annonces du Sénégal)",
+      "scores": [1, 0, 0, 1, 1],
+      "priorite": 1,
+      "observations": "Variables bien structurées. Un collecteur commercial existe déjà (Apify « Expat-Dakar property scraper »), ce qui confirme la faisabilité technique. Protections anti-robots possibles, à vérifier par le test automatisé."
+    },
+    {
+      "id": "P12", "nom": "SamaGallé", "categorie": "D",
+      "pays": ["SEN"],
+      "type": "Annonces + prix médians publiés par zone",
+      "liens": [
+        {"pays": "SEN", "url": "https://samagalle.com/"},
+        {"pays": "SEN", "url": "https://samagalle.com/prix-immobilier/dakar"},
+        {"pays": "SEN", "url": "https://samagalle.com/appartement-a-louer-dakar"}
+      ],
+      "url_test": "https://samagalle.com/prix-immobilier/dakar",
+      "variables": "Médianes par zone et type (loyer mensuel, prix au m² des terrains, prix des villas) + nombre d'annonces",
+      "volume": "Loyer médian d'un appartement à Dakar : 300 000 FCFA sur 1 578 annonces (août 2026) ; terrains 133 333 FCFA/m² (381 annonces) ; villas 85 M FCFA (274 annonces)",
+      "scores": [0, 0, 0, 1, 1],
+      "priorite": 1,
+      "observations": "Plus de 200 professionnels partenaires. Méthodologie publiée (au moins 3 annonces par cellule, locations courte durée exclues). Double intérêt : annonces unitaires et référence de validation. Candidat pour un partenariat de données."
+    },
+    {
+      "id": "P13", "nom": "Appart.sn", "categorie": "B",
+      "pays": ["SEN"],
+      "type": "Location, vente",
+      "liens": [{"pays": "SEN", "url": "https://www.appart.sn/"}],
+      "url_test": "https://www.appart.sn/",
+      "variables": "Prix, quartier (Almadies, Ngor, Ouakam, Yoff, Mamelles...), type",
+      "volume": "Moyen",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Annonces classées par quartier, pratique pour la stratification géographique."
+    },
+    {
+      "id": "P14", "nom": "Ziama-Dakar", "categorie": "B",
+      "pays": ["SEN"],
+      "type": "Location, vente",
+      "liens": [{"pays": "SEN", "url": "https://www.ziama-dakar.com/"}],
+      "url_test": "https://www.ziama-dakar.com/",
+      "variables": "Prix, type, localisation",
+      "volume": "Moyen (non mesuré)",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Plateforme récente, à tester."
+    },
+    {
+      "id": "P15", "nom": "SIM IMMO", "categorie": "B",
+      "pays": ["SEN"],
+      "type": "Vente, location",
+      "liens": [{"pays": "SEN", "url": "https://sim-immo.com/"}],
+      "url_test": "https://sim-immo.com/",
+      "variables": "Prix, type, localisation",
+      "volume": "Faible à moyen",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "À tester."
+    },
+    {
+      "id": "P16", "nom": "1000-Annonces (Sénégal)", "categorie": "B",
+      "pays": ["SEN"],
+      "type": "Location (petites annonces généralistes)",
+      "liens": [{"pays": "SEN", "url": "https://www.1000-annonces.com/senegal/immobilier/location/appartement-CR21209069.html"}],
+      "url_test": "https://www.1000-annonces.com/senegal/immobilier/location/appartement-CR21209069.html",
+      "variables": "Prix, texte libre",
+      "volume": "Faible",
+      "scores": [1, 2, 1, 2, 1],
+      "priorite": 3,
+      "observations": "Site généraliste peu structuré."
+    },
+    {
+      "id": "P17", "nom": "2S Immobilier", "categorie": "C",
+      "pays": ["SEN"],
+      "type": "Agence (vente, location)",
+      "liens": [{"pays": "SEN", "url": "https://www.2simmobilier.com/"}],
+      "url_test": "https://www.2simmobilier.com/",
+      "variables": "Prix, type, quartier, surface",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Représentatif des sites d'agences : bonne qualité, faible volume, gabarits hétérogènes."
+    },
+    {
+      "id": "P18", "nom": "Observatoire des prix immobiliers au Sénégal (Sénégal Immobilier)", "categorie": "D",
+      "pays": ["SEN"],
+      "type": "Prix moyens publiés",
+      "liens": [{"pays": "SEN", "url": "https://annonces-immobilieres-senegal.com/observatoire-prix-immobilier-senegal/"}],
+      "url_test": "https://annonces-immobilieres-senegal.com/observatoire-prix-immobilier-senegal/",
+      "variables": "Prix moyens par type et zone",
+      "volume": "Page de synthèse",
+      "scores": [0, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Référence de validation adossée au réseau P04."
+    },
+    {
+      "id": "P19", "nom": "Annonces.abidjan.net (Immobilier)", "categorie": "B",
+      "pays": ["CIV"],
+      "type": "Vente, location",
+      "liens": [{"pays": "CIV", "url": "https://annonces.abidjan.net/immobiliers"}],
+      "url_test": "https://annonces.abidjan.net/immobiliers",
+      "variables": "Prix, type, commune, description",
+      "volume": "Moyen",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Portail d'actualité à forte audience ; fiches avec identifiant numérique (ex. /immobiliers/2971/details/...)."
+    },
+    {
+      "id": "P20", "nom": "IvoireDomi", "categorie": "D",
+      "pays": ["CIV"],
+      "type": "Annonces + prix au m² par ville et commune (mise à jour mensuelle)",
+      "liens": [
+        {"pays": "CIV", "url": "https://ivoiredomi.ci/prix-immobilier-cote-divoire/"},
+        {"pays": "CIV", "url": "https://ivoiredomi.ci/prix-immobilier-cote-divoire/abidjan/"},
+        {"pays": "CIV", "url": "https://ivoiredomi.ci/appartements-a-louer-cocody/"}
+      ],
+      "url_test": "https://ivoiredomi.ci/prix-immobilier-cote-divoire/abidjan/",
+      "variables": "Prix au m² par type (appartement, maison, terrain, local commercial) et commune ; nombre d'annonces",
+      "volume": "Abidjan, sept. 2026 : appartements 275 054 FCFA/m², maisons 380 398 FCFA/m², terrains 250 373 FCFA/m² ; 98 appartements à louer à Cocody",
+      "scores": [0, 0, 1, 1, 1],
+      "priorite": 1,
+      "observations": "Seule source repérée publiant un prix au m² mensuel par commune en Côte d'Ivoire. Précieux pour valider un futur indice ; méthodologie à obtenir."
+    },
+    {
+      "id": "P21", "nom": "Fatali", "categorie": "B",
+      "pays": ["CIV"],
+      "type": "Petites annonces généralistes (dont immobilier)",
+      "liens": [{"pays": "CIV", "url": "https://fatali.ci/"}],
+      "url_test": "https://fatali.ci/",
+      "variables": "Prix, commune, texte libre",
+      "volume": "Moyen",
+      "scores": [1, 1, 1, 2, 1],
+      "priorite": 2,
+      "observations": "Gratuit pour les particuliers, donc volume mais bruit."
+    },
+    {
+      "id": "P22", "nom": "AbidjanMaison.net", "categorie": "B",
+      "pays": ["CIV"],
+      "type": "Vente, location",
+      "liens": [{"pays": "CIV", "url": "https://abidjanmaison.net/"}],
+      "url_test": "https://abidjanmaison.net/",
+      "variables": "Prix, type, commune",
+      "volume": "Moyen (non mesuré)",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "À tester."
+    },
+    {
+      "id": "P23", "nom": "Batirici Immobilier", "categorie": "B",
+      "pays": ["CIV"],
+      "type": "Plateforme d'agences",
+      "liens": [{"pays": "CIV", "url": "https://batirici-immobilier.com/"}],
+      "url_test": "https://batirici-immobilier.com/",
+      "variables": "Prix, type, commune",
+      "volume": "Moyen (non mesuré)",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Annonces d'agences."
+    },
+    {
+      "id": "P24", "nom": "Annoncesimmo-ci", "categorie": "B",
+      "pays": ["CIV"],
+      "type": "Annonces d'agents et de démarcheurs",
+      "liens": [{"pays": "CIV", "url": "https://www.annoncesimmo-ci.com/"}],
+      "url_test": "https://www.annoncesimmo-ci.com/",
+      "variables": "Prix, commune, texte libre",
+      "volume": "Moyen",
+      "scores": [1, 1, 1, 2, 1],
+      "priorite": 3,
+      "observations": "Démarcheurs : risque élevé de doublons avec les autres sites."
+    },
+    {
+      "id": "P25", "nom": "Immobilier-cotedivoire.com", "categorie": "B",
+      "pays": ["CIV"],
+      "type": "Vente, location",
+      "liens": [{"pays": "CIV", "url": "https://www.immobilier-cotedivoire.com/"}],
+      "url_test": "https://www.immobilier-cotedivoire.com/",
+      "variables": "Prix, type, commune",
+      "volume": "Faible à moyen",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 3,
+      "observations": "Publie aussi des guides de prix par commune (ex. Cocody)."
+    },
+    {
+      "id": "P26", "nom": "Koliaka", "categorie": "B",
+      "pays": ["CIV"],
+      "type": "Vente, location (particulier à particulier)",
+      "liens": [{"pays": "CIV", "url": "https://koliaka.com/"}],
+      "url_test": "https://koliaka.com/",
+      "variables": "Prix, ville, catégorie",
+      "volume": "Moyen, couverture de villes de l'intérieur (Korhogo, Bondoukou, Agboville)",
+      "scores": [2, 1, 1, 1, 2],
+      "priorite": 3,
+      "observations": "Script anti-copie des descriptifs signalé : signal clair d'opposition à la collecte automatique. Contact direct préférable."
+    },
+    {
+      "id": "P27", "nom": "Twins Immobilier", "categorie": "C",
+      "pays": ["CIV"],
+      "type": "Agence",
+      "liens": [{"pays": "CIV", "url": "https://twins-immobilier.com/departement/abidjan/"}],
+      "url_test": "https://twins-immobilier.com/departement/abidjan/",
+      "variables": "Prix, type, commune",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P28", "nom": "MD Immobilier", "categorie": "C",
+      "pays": ["CIV"],
+      "type": "Agence (location)",
+      "liens": [{"pays": "CIV", "url": "https://www.mdimmo-ci.com/fr/locations"}],
+      "url_test": "https://www.mdimmo-ci.com/fr/locations",
+      "variables": "Prix, type, commune",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P29", "nom": "ISIS Immobilier", "categorie": "C",
+      "pays": ["CIV"],
+      "type": "Agence (location)",
+      "liens": [{"pays": "CIV", "url": "https://isis-immobilier.com/louer-appartement"}],
+      "url_test": "https://isis-immobilier.com/louer-appartement",
+      "variables": "Prix, type, commune (Cocody, Marcory, Zone 4)",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P30", "nom": "Afrilogement", "categorie": "B",
+      "pays": ["BEN"],
+      "type": "Vente, location, terrains (annonces vérifiées)",
+      "liens": [{"pays": "BEN", "url": "https://www.afrilogement.com/annonces"}],
+      "url_test": "https://www.afrilogement.com/annonces",
+      "variables": "Prix, type, ville (Cotonou, Abomey-Calavi, Porto-Novo...)",
+      "volume": "Plus de 2 700 annonces vérifiées",
+      "scores": [1, 1, 0, 1, 1],
+      "priorite": 1,
+      "observations": "Principale source nationale au Bénin en volume."
+    },
+    {
+      "id": "P31", "nom": "Ganda Immobilier", "categorie": "B",
+      "pays": ["BEN"],
+      "type": "Vente, location, terrains",
+      "liens": [{"pays": "BEN", "url": "https://gandaimmobilier.com/"}],
+      "url_test": "https://gandaimmobilier.com/",
+      "variables": "Prix, type, ville",
+      "volume": "Moyen (non mesuré)",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "À tester."
+    },
+    {
+      "id": "P32", "nom": "BENIN-IMMO", "categorie": "C",
+      "pays": ["BEN"],
+      "type": "Agence (vente, location, terrains)",
+      "liens": [
+        {"pays": "BEN", "url": "https://benin-immo.com/"},
+        {"pays": "BEN", "url": "https://benin-immo.com/parcelle-a-vendre-au-benin-terrain/"}
+      ],
+      "url_test": "https://benin-immo.com/parcelle-a-vendre-au-benin-terrain/",
+      "variables": "Prix, type, localisation",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P33", "nom": "GEST-IONN Immobilier", "categorie": "C",
+      "pays": ["BEN"],
+      "type": "Agence (plus de 600 biens)",
+      "liens": [{"pays": "BEN", "url": "https://www.gest-ionn.fr/"}],
+      "url_test": "https://www.gest-ionn.fr/",
+      "variables": "Prix, type, quartier",
+      "volume": "Plus de 600 biens annoncés",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Volume important pour une agence."
+    },
+    {
+      "id": "P34", "nom": "Benin House", "categorie": "C",
+      "pays": ["BEN"],
+      "type": "Agence",
+      "liens": [{"pays": "BEN", "url": "https://beninhouse.com/"}],
+      "url_test": "https://beninhouse.com/",
+      "variables": "Prix, type, quartier",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P35", "nom": "Ladynad Immobilier", "categorie": "C",
+      "pays": ["BEN"],
+      "type": "Agence",
+      "liens": [{"pays": "BEN", "url": "https://ladynadimmo.com/"}],
+      "url_test": "https://ladynadimmo.com/",
+      "variables": "Prix, type, quartier",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P36", "nom": "Togo Immobilier", "categorie": "B",
+      "pays": ["TGO"],
+      "type": "Vente, location (agences)",
+      "liens": [{"pays": "TGO", "url": "https://togoimmobilier.tg/"}],
+      "url_test": "https://togoimmobilier.tg/",
+      "variables": "Prix, type, quartier",
+      "volume": "Moyen (non mesuré)",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Portail national d'agences."
+    },
+    {
+      "id": "P37", "nom": "AHOE", "categorie": "B",
+      "pays": ["TGO"],
+      "type": "Location, vente",
+      "liens": [{"pays": "TGO", "url": "https://ahoe.immo/louer"}],
+      "url_test": "https://ahoe.immo/louer",
+      "variables": "Prix, type, ville",
+      "volume": "Moyen (non mesuré)",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "À tester."
+    },
+    {
+      "id": "P38", "nom": "LandLw", "categorie": "B",
+      "pays": ["TGO"],
+      "type": "Vente, location",
+      "liens": [{"pays": "TGO", "url": "https://landlw.com/"}],
+      "url_test": "https://landlw.com/",
+      "variables": "Prix, type, quartier",
+      "volume": "Moyen (non mesuré)",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "À tester."
+    },
+    {
+      "id": "P39", "nom": "Agoloo Ads", "categorie": "B",
+      "pays": ["TGO"],
+      "type": "Petites annonces généralistes",
+      "liens": [{"pays": "TGO", "url": "https://www.agoloo.com/maison-villa_1/maisons-ou-villas-ou-immeubles-en-vente-au-togo-a-lome_i3995"}],
+      "url_test": "https://www.agoloo.com/maison-villa_1/maisons-ou-villas-ou-immeubles-en-vente-au-togo-a-lome_i3995",
+      "variables": "Texte libre",
+      "volume": "Faible",
+      "scores": [1, 2, 1, 2, 1],
+      "priorite": 3,
+      "observations": "Annonces peu structurées."
+    },
+    {
+      "id": "P40", "nom": "Fabio Immobilier", "categorie": "C",
+      "pays": ["TGO"],
+      "type": "Agence",
+      "liens": [{"pays": "TGO", "url": "http://fabioimmobilier.com/annonce?typeAnnonce=1&typeBien=Tous+les+biens&typeRecherche=1&activerRecherche=1"}],
+      "url_test": "http://fabioimmobilier.com/annonce?typeAnnonce=1&typeBien=Tous+les+biens&typeRecherche=1&activerRecherche=1",
+      "variables": "Prix, type",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site servi en HTTP non chiffré."
+    },
+    {
+      "id": "P41", "nom": "Iciélabas Immobilier", "categorie": "B",
+      "pays": ["TGO"],
+      "type": "Services et immobilier",
+      "liens": [{"pays": "TGO", "url": "https://immobilier.icielabas.com/"}],
+      "url_test": "https://immobilier.icielabas.com/",
+      "variables": "Prix, type",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "À tester."
+    },
+    {
+      "id": "P42", "nom": "Miya Immobilier", "categorie": "C",
+      "pays": ["TGO"],
+      "type": "Agence",
+      "liens": [{"pays": "TGO", "url": "https://miya-immobilier.com/"}],
+      "url_test": "https://miya-immobilier.com/",
+      "variables": "Prix, type, quartier",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P43", "nom": "Royal Immobilier (RIM)", "categorie": "C",
+      "pays": ["TGO"],
+      "type": "Agence",
+      "liens": [{"pays": "TGO", "url": "https://royalimmotogo.com/"}],
+      "url_test": "https://royalimmotogo.com/",
+      "variables": "Prix, type, quartier",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P44", "nom": "Roogo", "categorie": "B",
+      "pays": ["BFA"],
+      "type": "Location (appartements, maisons, villas, locaux)",
+      "liens": [{"pays": "BFA", "url": "https://www.roogobf.com/"}],
+      "url_test": "https://www.roogobf.com/",
+      "variables": "Prix, type, quartier",
+      "volume": "Moyen (non mesuré)",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Plateforme nationale dédiée à la location."
+    },
+    {
+      "id": "P45", "nom": "Clefs du Faso", "categorie": "B",
+      "pays": ["BFA"],
+      "type": "Location, vente",
+      "liens": [{"pays": "BFA", "url": "https://clefsdufaso.com/annonce/ouaga-2000-zonne-a/"}],
+      "url_test": "https://clefsdufaso.com/",
+      "variables": "Prix, type, quartier",
+      "volume": "Faible à moyen",
+      "scores": [1, 1, 1, 1, 1],
+      "priorite": 2,
+      "observations": "Ex. : villa de prestige Ouaga 2000 à 2 000 000 FCFA/mois."
+    },
+    {
+      "id": "P46", "nom": "Perfector Immobilier", "categorie": "C",
+      "pays": ["BFA"],
+      "type": "Agence",
+      "liens": [{"pays": "BFA", "url": "https://www.perfectorimmobilier.bf/property-type/villa/"}],
+      "url_test": "https://www.perfectorimmobilier.bf/property-type/villa/",
+      "variables": "Prix, type, surface, chambres, quartier",
+      "volume": "Faible",
+      "scores": [1, 0, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Fiches structurées (ex. mini-villa F3 Ouaga 2000, 287 m², 35 M FCFA)."
+    },
+    {
+      "id": "P47", "nom": "Immo Burkina", "categorie": "C",
+      "pays": ["BFA"],
+      "type": "Agence",
+      "liens": [{"pays": "BFA", "url": "https://www.immoburkina.com/"}],
+      "url_test": "https://www.immoburkina.com/",
+      "variables": "Prix, type",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P48", "nom": "i360 Immobilier", "categorie": "C",
+      "pays": ["BFA"],
+      "type": "Agence",
+      "liens": [{"pays": "BFA", "url": "https://i360immo.com/"}],
+      "url_test": "https://i360immo.com/",
+      "variables": "Prix, type",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site d'agence."
+    },
+    {
+      "id": "P49", "nom": "Jumia Burkina Faso (rubrique immobilier)", "categorie": "B",
+      "pays": ["BFA"],
+      "type": "Petites annonces (statut à vérifier)",
+      "liens": [{"pays": "BFA", "url": "https://www.jumia.bf/ouagadougou/immobilier"}],
+      "url_test": "https://www.jumia.bf/ouagadougou/immobilier",
+      "variables": "Inconnu",
+      "volume": "Probablement nul",
+      "scores": [2, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Jumia a fermé ou cédé ses activités d'annonces immobilières (Jumia House). Page encore indexée, activité probablement arrêtée : à vérifier avant d'y consacrer des efforts."
+    },
+    {
+      "id": "P50", "nom": "Bamako Immobilier / Traoré Diarra Immobilier", "categorie": "C",
+      "pays": ["MLI"],
+      "type": "Agence (vente, location)",
+      "liens": [
+        {"pays": "MLI", "url": "https://www.bamako-immobilier.com/location_appartements.html"},
+        {"pays": "MLI", "url": "https://www.mali-location.com/Vente.html"}
+      ],
+      "url_test": "https://www.bamako-immobilier.com/location_appartements.html",
+      "variables": "Prix, type, quartier (Baco Djicoroni, Faladié, Hippodrome, ACI 2000)",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Site ancien orienté diaspora."
+    },
+    {
+      "id": "P51", "nom": "Mercaducasa", "categorie": "C",
+      "pays": ["GNB"],
+      "type": "Agence (vente, location, terrains)",
+      "liens": [{"pays": "GNB", "url": "https://www.mercaducasa.com/"}],
+      "url_test": "https://www.mercaducasa.com/",
+      "variables": "Prix FCFA, type, localisation",
+      "volume": "Faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 1,
+      "observations": "Seul site structuré repéré en Guinée-Bissau (priorité 1 faute d'alternative)."
+    },
+    {
+      "id": "P52", "nom": "Mercado.gratis (Guinée-Bissau)", "categorie": "B",
+      "pays": ["GNB"],
+      "type": "Petites annonces généralistes",
+      "liens": [{"pays": "GNB", "url": "https://mercado.gratis/pt/categoria/imoveis"}],
+      "url_test": "https://mercado.gratis/pt/categoria/imoveis",
+      "variables": "Texte libre (portugais)",
+      "volume": "Très faible",
+      "scores": [1, 2, 2, 2, 1],
+      "priorite": 2,
+      "observations": "Terrains et quelques locations à Bissau."
+    },
+    {
+      "id": "P53", "nom": "Bagabaga Construções", "categorie": "C",
+      "pays": ["GNB"],
+      "type": "Promoteur",
+      "liens": [{"pays": "GNB", "url": "https://bagabaga-gb.com/imobiliaria/"}],
+      "url_test": "https://bagabaga-gb.com/imobiliaria/",
+      "variables": "Programmes neufs (Ponta Gardete)",
+      "volume": "Très faible",
+      "scores": [1, 1, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Prix du neuf chez un promoteur."
+    },
+    {
+      "id": "P54", "nom": "Réseaux sociaux (pages et comptes d'agences)", "categorie": "G",
+      "pays": ["GNB", "UEMOA"],
+      "type": "Annonces publiées sur Facebook et Instagram",
+      "liens": [
+        {"pays": "GNB", "url": "https://www.facebook.com/hellobissauimoveis/"},
+        {"pays": "GNB", "url": "https://www.facebook.com/mercaducasa/"},
+        {"pays": "GNB", "url": "https://www.instagram.com/eliteimoveisbissau/"}
+      ],
+      "url_test": "",
+      "variables": "Texte libre, images",
+      "volume": "Élevé dans toute la zone mais non accessible",
+      "scores": [2, 2, 1, 2, 2],
+      "priorite": 3,
+      "observations": "Canal majeur du marché informel, mais collecte automatique interdite par les conditions d'utilisation et connexion obligatoire. Seule voie envisageable : relevé manuel ou partenariat."
+    },
+    {
+      "id": "P55", "nom": "BCEAO - Publications sur les prix et la conjoncture", "categorie": "E",
+      "pays": ["UEMOA"],
+      "type": "IHPC (dont fonction logement), notes de conjoncture",
+      "liens": [
+        {"pays": "UEMOA", "url": "https://www.bceao.int/fr/publications/rapport-annuel-sur-levolution-des-prix-la-consommation-dans-luemoa-en-2024-et"},
+        {"pays": "UEMOA", "url": "https://www.bceao.int/fr/publications/bulletins"},
+        {"pays": "UEMOA", "url": "https://www.bceao.int/sites/default/files/2026-04/Note%20de%20conjoncture%20%C3%A9conomique%20des%20pays%20de%20l'UEMOA_Mars%202026.pdf"}
+      ],
+      "url_test": "https://www.bceao.int/fr/publications/bulletins",
+      "variables": "Indices de prix par fonction de consommation et par pays",
+      "volume": "Mensuel / annuel",
+      "scores": [0, 1, 0, 0, 0],
+      "priorite": 1,
+      "observations": "Aucun indice des prix de l'immobilier résidentiel publié par la BCEAO à ce jour. Sert au contexte et à la déflation."
+    },
+    {
+      "id": "P56", "nom": "BCEAO - Base de données EDEN", "categorie": "E",
+      "pays": ["UEMOA"],
+      "type": "Séries statistiques (prix, crédit, secteur réel)",
+      "liens": [
+        {"pays": "UEMOA", "url": "https://edenpub.bceao.int/"},
+        {"pays": "UEMOA", "url": "https://edenpub.bceao.int/EDEN_DICTIONNAIRE_VARIABLES.pdf"},
+        {"pays": "UEMOA", "url": "https://edenpub.bceao.int/GUIDEUTILISATEUR.pdf"}
+      ],
+      "url_test": "https://edenpub.bceao.int/",
+      "variables": "IHPC mensuel par pays, utilisation des crédits (centrale des risques), taux",
+      "volume": "Mensuel",
+      "scores": [0, 0, 0, 0, 0],
+      "priorite": 1,
+      "observations": "Tableaux prédéfinis et requêtes par variable, exportables. Source de référence pour la déflation et le suivi du crédit à l'habitat."
+    },
+    {
+      "id": "P57", "nom": "ANSD Sénégal - IHPC et indice des prix des matériaux de construction", "categorie": "E",
+      "pays": ["SEN"],
+      "type": "IHPC (loyers effectifs), IMC",
+      "liens": [
+        {"pays": "SEN", "url": "https://www.ansd.sn/Indicateur/indice-harmonise-des-prix-la-consommation-ihpc-base-100-en-2023"},
+        {"pays": "SEN", "url": "https://www.ansd.sn/Indicateur/indice-des-prix-des-materiaux-de-construction-imc"}
+      ],
+      "url_test": "https://www.ansd.sn/Indicateur/indice-harmonise-des-prix-la-consommation-ihpc-base-100-en-2023",
+      "variables": "Sous-indice « loyers effectifs des locataires et sous-locataires », IMC",
+      "volume": "Mensuel (publication au plus tard le 10 du mois suivant)",
+      "scores": [0, 1, 0, 0, 0],
+      "priorite": 1,
+      "observations": "Publications en PDF : extraction des tableaux nécessaire. Le sous-indice des loyers est la meilleure référence officielle pour valider un indice des loyers."
+    },
+    {
+      "id": "P58", "nom": "ANStat Côte d'Ivoire (ex-INS)", "categorie": "E",
+      "pays": ["CIV"],
+      "type": "IHPC",
+      "liens": [
+        {"pays": "CIV", "url": "https://www.anstat.ci/"},
+        {"pays": "CIV", "url": "http://www.ins.ci/"}
+      ],
+      "url_test": "https://www.anstat.ci/",
+      "variables": "IHPC par fonction (base 2023, 15 zones économiques)",
+      "volume": "Mensuel",
+      "scores": [0, 1, 0, 0, 0],
+      "priorite": 1,
+      "observations": "Publications PDF avec URL non prévisibles (identifiants chiffrés) : repérage manuel ou via la page de liste."
+    },
+    {
+      "id": "P59", "nom": "INStaD Bénin", "categorie": "E",
+      "pays": ["BEN"],
+      "type": "IHPC",
+      "liens": [
+        {"pays": "BEN", "url": "https://instad.bj/"},
+        {"pays": "BEN", "url": "https://instad.bj/publications/publications-mensuelles/prix/824-indice-harmonise-des-prix-a-la-consommation-du-mois-de-mai-2026"}
+      ],
+      "url_test": "https://instad.bj/",
+      "variables": "IHPC (Cotonou), plus de 600 produits, environ 1 000 points de vente",
+      "volume": "Mensuel (calendrier de diffusion publié)",
+      "scores": [0, 1, 0, 0, 0],
+      "priorite": 1,
+      "observations": "Publications PDF régulières."
+    },
+    {
+      "id": "P60", "nom": "INSD Burkina Faso", "categorie": "E",
+      "pays": ["BFA"],
+      "type": "IHPC",
+      "liens": [{"pays": "BFA", "url": "https://www.insd.bf/"}],
+      "url_test": "https://www.insd.bf/",
+      "variables": "IHPC par fonction",
+      "volume": "Mensuel",
+      "scores": [0, 1, 0, 0, 0],
+      "priorite": 1,
+      "observations": "Publications PDF."
+    },
+    {
+      "id": "P61", "nom": "INSTAT Mali", "categorie": "E",
+      "pays": ["MLI"],
+      "type": "IHPC",
+      "liens": [{"pays": "MLI", "url": "https://www.instat-mali.org/"}],
+      "url_test": "https://www.instat-mali.org/",
+      "variables": "IHPC par fonction",
+      "volume": "Mensuel",
+      "scores": [1, 1, 1, 0, 0],
+      "priorite": 1,
+      "observations": "Régularité de mise en ligne à vérifier."
+    },
+    {
+      "id": "P62", "nom": "INS Niger", "categorie": "E",
+      "pays": ["NER"],
+      "type": "IHPC",
+      "liens": [{"pays": "NER", "url": "https://www.stat-niger.org/"}],
+      "url_test": "https://www.stat-niger.org/",
+      "variables": "IHPC par fonction",
+      "volume": "Mensuel",
+      "scores": [0, 1, 0, 0, 0],
+      "priorite": 1,
+      "observations": "Publications PDF."
+    },
+    {
+      "id": "P63", "nom": "INSEED Togo", "categorie": "E",
+      "pays": ["TGO"],
+      "type": "IHPC",
+      "liens": [
+        {"pays": "TGO", "url": "https://inseed.tg/"},
+        {"pays": "TGO", "url": "https://inseed.tg/statistiques-economiques/"}
+      ],
+      "url_test": "https://inseed.tg/statistiques-economiques/",
+      "variables": "IHPC par fonction",
+      "volume": "Mensuel",
+      "scores": [0, 1, 0, 0, 0],
+      "priorite": 1,
+      "observations": "Publications PDF."
+    },
+    {
+      "id": "P64", "nom": "INE Guinée-Bissau", "categorie": "E",
+      "pays": ["GNB"],
+      "type": "IHPC",
+      "liens": [{"pays": "GNB", "url": "https://www.stat-guinebissau.com/"}],
+      "url_test": "https://www.stat-guinebissau.com/",
+      "variables": "IHPC par fonction",
+      "volume": "Mensuel (régularité à vérifier)",
+      "scores": [1, 1, 2, 0, 0],
+      "priorite": 1,
+      "observations": "Disponibilité en ligne irrégulière ; souvent plus simple de passer par la BCEAO (EDEN)."
+    },
+    {
+      "id": "P65", "nom": "Commission de l'UEMOA / PHMECV", "categorie": "F",
+      "pays": ["UEMOA"],
+      "type": "Surveillance multilatérale, harmonisation des enquêtes ménages",
+      "liens": [
+        {"pays": "UEMOA", "url": "https://www.uemoa.int/"},
+        {"pays": "UEMOA", "url": "https://phmecv.uemoa.int/"}
+      ],
+      "url_test": "https://phmecv.uemoa.int/",
+      "variables": "Documentation EHCVM, rapports",
+      "volume": "Ponctuel",
+      "scores": [0, 1, 1, 0, 0],
+      "priorite": 2,
+      "observations": "Porte d'entrée institutionnelle pour un futur indice régional."
+    },
+    {
+      "id": "P66", "nom": "AFRISTAT", "categorie": "F",
+      "pays": ["UEMOA"],
+      "type": "Méthodologie des indices de prix",
+      "liens": [
+        {"pays": "UEMOA", "url": "https://www.afristat.org/"},
+        {"pays": "UEMOA", "url": "https://www.afristat.org/wp-content/uploads/2022/02/APA01_guide_ihpc.pdf"}
+      ],
+      "url_test": "https://www.afristat.org/",
+      "variables": "Guide méthodologique de l'IHPC, nomenclature NCOA",
+      "volume": "Ponctuel",
+      "scores": [0, 1, 2, 0, 0],
+      "priorite": 2,
+      "observations": "Pas d'indice des prix de l'immobilier ; référence méthodologique (nomenclatures, zones)."
+    },
+    {
+      "id": "P67", "nom": "EHCVM 2021-2022 (microdonnées Banque mondiale / UEMOA)", "categorie": "E",
+      "pays": ["UEMOA"],
+      "type": "Enquête ménages : loyers payés, loyers imputés, caractéristiques des logements",
+      "liens": [
+        {"pays": "SEN", "url": "https://microdata.worldbank.org/index.php/catalog/6278"},
+        {"pays": "CIV", "url": "https://microdata.worldbank.org/index.php/catalog/6273"},
+        {"pays": "BFA", "url": "https://microdata.worldbank.org/index.php/catalog/6277"},
+        {"pays": "NER", "url": "https://microdata.worldbank.org/index.php/catalog/6276"},
+        {"pays": "UEMOA", "url": "https://microdata.worldbank.org/index.php/catalog?sk=EHCVM"},
+        {"pays": "SEN", "url": "https://anads.ansd.sn/index.php/catalog/310"}
+      ],
+      "url_test": "https://microdata.worldbank.org/index.php/catalog/6278",
+      "variables": "Loyer mensuel, statut d'occupation, pièces, matériaux, équipements, milieu, région",
+      "volume": "Enquête 2021-2022 (8 pays UEMOA + Tchad), deux vagues",
+      "scores": [0, 0, 1, 0, 1],
+      "priorite": 1,
+      "observations": "Accès sur inscription et acceptation d'une licence. Base essentielle pour les pondérations et un modèle hédonique des loyers ; permet de comparer la structure des annonces en ligne à celle du parc réel."
+    },
+    {
+      "id": "P68", "nom": "CAHF - Housing Finance in Africa Yearbook", "categorie": "F",
+      "pays": ["UEMOA"],
+      "type": "Profils pays annuels (prix du logement neuf le moins cher, loyers, crédit)",
+      "liens": [
+        {"pays": "UEMOA", "url": "https://housingfinanceafrica.org/resources/yearbook/"},
+        {"pays": "SEN", "url": "https://housingfinanceafrica.org/country-detail/senegal/"},
+        {"pays": "CIV", "url": "https://housingfinanceafrica.org/country-detail/cote-d-ivoire/"},
+        {"pays": "GNB", "url": "https://housingfinanceafrica.org/country-detail/guinea-bissua/"},
+        {"pays": "UEMOA", "url": "https://housingfinanceafrica.org/library/dashboard-availability-of-housing-finance-data-in-africa/"}
+      ],
+      "url_test": "https://housingfinanceafrica.org/resources/yearbook/",
+      "variables": "Prix du logement neuf le moins cher (ex. Guinée-Bissau : 10,23 M FCFA pour 50 m²), loyer typique, taille",
+      "volume": "Annuel, 8 pays",
+      "scores": [0, 1, 1, 0, 0],
+      "priorite": 1,
+      "observations": "Seule source comparable couvrant les 8 pays chaque année. Utile pour étalonner les niveaux ; trop peu fréquent pour un indice."
+    },
+    {
+      "id": "P69", "nom": "CRRH-UEMOA", "categorie": "F",
+      "pays": ["UEMOA"],
+      "type": "Étude sur le logement abordable, financement hypothécaire",
+      "liens": [
+        {"pays": "UEMOA", "url": "https://www.crrhuemoa.org/fr/gssbond"},
+        {"pays": "UEMOA", "url": "https://www.mfw4a.org/sites/default/files/resources/Etat_des_lieux_du_logement_abordable_dans_l_UEMOA.pdf"}
+      ],
+      "url_test": "https://www.crrhuemoa.org/fr/gssbond",
+      "variables": "Déficit en logements (3,5 millions d'unités), accessibilité par pays",
+      "volume": "Ponctuel",
+      "scores": [0, 1, 2, 0, 0],
+      "priorite": 2,
+      "observations": "Partenaire institutionnel potentiel (données des prêts refinancés)."
+    },
+    {
+      "id": "P70", "nom": "Reall - Market Shaping Indicators", "categorie": "F",
+      "pays": ["CIV"],
+      "type": "Indicateurs de marché du logement",
+      "liens": [{"pays": "CIV", "url": "https://reall.net/msi/cote-divoire/"}],
+      "url_test": "https://reall.net/msi/cote-divoire/",
+      "variables": "Indicateurs d'accessibilité et de prix",
+      "volume": "Ponctuel",
+      "scores": [0, 1, 2, 0, 1],
+      "priorite": 3,
+      "observations": "Complément pour la Côte d'Ivoire."
+    },
+    {
+      "id": "P71", "nom": "ONU-Habitat - Profil du secteur du logement urbain au Sénégal", "categorie": "F",
+      "pays": ["SEN"],
+      "type": "Étude",
+      "liens": [{"pays": "SEN", "url": "https://unhabitat.org/profil-du-secteur-du-logement-urban-au-senegal-senegal-urban-housing-sector-profile"}],
+      "url_test": "https://unhabitat.org/profil-du-secteur-du-logement-urban-au-senegal-senegal-urban-housing-sector-profile",
+      "variables": "Structure du parc, prix, filières",
+      "volume": "Ponctuel",
+      "scores": [0, 2, 2, 0, 0],
+      "priorite": 3,
+      "observations": "Contexte et typologie des logements."
+    },
+    {
+      "id": "P72", "nom": "DGID Sénégal - Barème des prix des terrains de l'État (arrêté de 2010)", "categorie": "H",
+      "pays": ["SEN"],
+      "type": "Prix administratifs de cession des terrains",
+      "liens": [{"pays": "SEN", "url": "https://www.dgid.sn/wp-content/uploads/2022/03/affaires_foncieres_domaniales_et_cadastrales_2_1.pdf"}],
+      "url_test": "https://www.dgid.sn/wp-content/uploads/2022/03/affaires_foncieres_domaniales_et_cadastrales_2_1.pdf",
+      "variables": "Prix au m² par secteur (Médina, Pikine, Dakar...)",
+      "volume": "Ponctuel (2010)",
+      "scores": [0, 2, 2, 0, 0],
+      "priorite": 3,
+      "observations": "Prix administratifs, pas prix de marché. Utile pour le zonage."
+    },
+    {
+      "id": "P73", "nom": "ANDF Bénin (e-Foncier)", "categorie": "H",
+      "pays": ["BEN"],
+      "type": "Cadastre, titres fonciers",
+      "liens": [{"pays": "BEN", "url": "https://andf.bj/"}],
+      "url_test": "https://andf.bj/",
+      "variables": "Parcelles, titres ; pas de prix de transaction publiés",
+      "volume": "Non applicable",
+      "scores": [1, 2, 2, 0, 1],
+      "priorite": 3,
+      "observations": "Source de transactions à négocier (convention), pas collectable en ligne."
+    },
+    {
+      "id": "P74", "nom": "Sika Finance - Prix d'acquisition des maisons dans l'UEMOA (synthèse 2023)", "categorie": "F",
+      "pays": ["UEMOA"],
+      "type": "Article de synthèse (d'après CAHF)",
+      "liens": [
+        {"pays": "UEMOA", "url": "https://www.sikafinance.com/premium/uemoa-ces-pays-ou-les-prix-dacquisition-de-maisons-sont-les-plus-eleves_46506"},
+        {"pays": "UEMOA", "url": "https://leperoke.com/prix-dacquisition-des-maisons-dans-luemoa-une-analyse-comparative/"},
+        {"pays": "UEMOA", "url": "https://cappfm.com/secteur-de-limmobilier-dans-lespace-uemoa-le-benin-en-tete-du-classement-du-prix-dacquisition-dune-maison-en-2023/"}
+      ],
+      "url_test": "https://leperoke.com/prix-dacquisition-des-maisons-dans-luemoa-une-analyse-comparative/",
+      "variables": "Prix médian d'acquisition d'une maison par pays en 2023 (de 7,05 M FCFA au Togo à 20,13 M FCFA au Bénin)",
+      "volume": "Ponctuel",
+      "scores": [2, 1, 2, 0, 1],
+      "priorite": 3,
+      "observations": "Article original payant ; reprises gratuites dans la presse."
+    },
+    {
+      "id": "P75", "nom": "Aciencia Capital Advisor - Immobilier résidentiel dans l'UEMOA", "categorie": "F",
+      "pays": ["UEMOA"],
+      "type": "Étude de marché",
+      "liens": [
+        {"pays": "UEMOA", "url": "https://aciencia-cap.com/en/residential-real-estate-in-waemu/"},
+        {"pays": "UEMOA", "url": "https://aciencia-cap.com/decouverte-des-prix-de-limmobilier-en-afrique/"}
+      ],
+      "url_test": "https://aciencia-cap.com/en/residential-real-estate-in-waemu/",
+      "variables": "Tendances des prix du neuf chez les promoteurs",
+      "volume": "Ponctuel",
+      "scores": [0, 2, 2, 1, 1],
+      "priorite": 3,
+      "observations": "Contexte qualitatif."
+    },
+    {
+      "id": "P76", "nom": "Apify - Expat-Dakar property scraper (outil tiers)", "categorie": "D",
+      "pays": ["SEN"],
+      "type": "Outil de collecte existant (preuve de faisabilité)",
+      "liens": [{"pays": "SEN", "url": "https://apify.com/sian.agency/expat-dakar-property-scraper"}],
+      "url_test": "",
+      "variables": "Catégorie, région, prix min/max, mot-clé quartier, tri par date",
+      "volume": "Non applicable",
+      "scores": [0, 0, 0, 1, 2],
+      "priorite": 3,
+      "observations": "Service payant. Montre que la collecte d'Expat-Dakar est techniquement faisable ; une collecte interne reste préférable pour la maîtrise de la méthode."
+    }
+  ],
+  "exclues": [
+    {"nom": "i-mmolink.com", "url": "https://www.i-mmolink.com/", "motif": "Présenté comme portail immobilier africain, mais le titre de la page affiche des publicités pour un casino en ligne : site vraisemblablement compromis, à écarter (risque de sécurité)."},
+    {"nom": "Jumia House", "url": "https://defimedia.info/fermeture-de-jumia-house-les-agents-craignent-un-monopole-sur-le-marche-de-limmobilier", "motif": "Portail fermé ; activité Maghreb cédée à Mubawab / EMPG."},
+    {"nom": "OLX Portugal (annonces « Guiné-Bissau »)", "url": "https://www.olx.pt/imoveis/q-guin%C3%A9-bissau/", "motif": "Biens situés au Portugal, sans rapport avec le marché bissau-guinéen."}
+  ]
+}
